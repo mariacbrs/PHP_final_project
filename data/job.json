@@ -1,0 +1,172 @@
+[
+    {
+        "jobId": 1,
+        "uId": 1,
+        "title": "Senior Cost Accountant",
+        "address": "3 Reinke Lane",
+        "salary": 20,
+        "img": "img\/pic-01.jpg",
+        "content": "Triple-buffered secondary paradigm",
+        "dis": true
+    },
+    {
+        "jobId": 2,
+        "uId": 1,
+        "title": "Senior Sales Associate",
+        "address": "95 Springs Crossing",
+        "salary": 16,
+        "img": "img\/pic-02.jpg",
+        "content": "Balanced national infrastructure",
+        "dis": false
+    },
+    {
+        "jobId": 3,
+        "uId": 3,
+        "title": "Structural Engineer",
+        "address": "3939 Erie Circle",
+        "salary": 26,
+        "img": "img\/pic-03.jpg",
+        "content": "Sharable zero defect core",
+        "dis": true
+    },
+    {
+        "jobId": 4,
+        "uId": 4,
+        "title": "Tax Accountant",
+        "address": "49 Artisan Point",
+        "salary": 20,
+        "img": "img\/pic-04.jpg",
+        "content": "Upgradable incremental orchestration",
+        "dis": true
+    },
+    {
+        "jobId": 5,
+        "uId": 5,
+        "title": "Account Coordinator",
+        "address": "1700 Mendota Avenue",
+        "salary": 27,
+        "img": "img\/pic-05.jpg",
+        "content": "Adaptive client-server info-mediaries",
+        "dis": false
+    },
+    {
+        "jobId": 6,
+        "uId": 6,
+        "title": "VP Product Management",
+        "address": "767 Mayer Park",
+        "salary": 26,
+        "img": "img\/pic-06.jpg",
+        "content": "Focused radical matrix",
+        "dis": false
+    },
+    {
+        "jobId": 7,
+        "uId": 7,
+        "title": "GIS Technical Architect",
+        "address": "0805 Dayton Plaza",
+        "salary": 23,
+        "img": "img\/pic-07.jpg",
+        "content": "Multi-layered bi-directional neural-net",
+        "dis": false
+    },
+    {
+        "jobId": 8,
+        "uId": 8,
+        "title": "Administrative Officer",
+        "address": "21 Florence Avenue",
+        "salary": 22,
+        "img": "img\/pic-08.jpg",
+        "content": "Inverse disintermediate hardware",
+        "dis": false
+    },
+    {
+        "jobId": 9,
+        "uId": 9,
+        "title": "Actuary",
+        "address": "821 Beilfuss Way",
+        "salary": 28,
+        "img": "img\/pic-09.jpg",
+        "content": "Public-key static paradigm",
+        "dis": true
+    },
+    {
+        "jobId": 10,
+        "uId": 10,
+        "title": "Administrative Officer",
+        "address": "6 Kensington Place",
+        "salary": 20,
+        "img": "img\/pic-10.jpg",
+        "content": "Upgradable secondary initiative",
+        "dis": true
+    },
+    {
+        "jobId": 11,
+        "uId": 11,
+        "title": "Accountant III",
+        "address": "537 Grasskamp Avenue",
+        "salary": 16,
+        "img": "img\/pic-11.jpg",
+        "content": "Open-source analyzing migration",
+        "dis": true
+    },
+    {
+        "jobId": 12,
+        "uId": 12,
+        "title": "Systems Administrator I",
+        "address": "1 Saint Paul Alley",
+        "salary": 18,
+        "img": "img\/pic-12.jpg",
+        "content": "Configurable discrete secured line",
+        "dis": true
+    },
+    {
+        "jobId": 13,
+        "uId": 13,
+        "title": "Software Engineer II",
+        "address": "86574 Crowley Court",
+        "salary": 24,
+        "img": "img\/pic-13.jpg",
+        "content": "Intuitive context-sensitive info-mediaries",
+        "dis": true
+    },
+    {
+        "jobId": 14,
+        "uId": 14,
+        "title": "Sales Representative",
+        "address": "62 Bluestem Lane",
+        "salary": 19,
+        "img": "img\/pic-14.jpg",
+        "content": "Enterprise-wide grid-enabled hierarchy",
+        "dis": true
+    },
+    {
+        "jobId": 15,
+        "uId": 15,
+        "title": "Quality Control Specialist",
+        "address": "071 Carpenter Pass",
+        "salary": 16,
+        "img": "img\/pic-15.jpg",
+        "content": "Upgradable system-worthy knowledge user",
+        "dis": true
+    },
+    {
+        "jobId": 16,
+        "uId": 1,
+        "title": "takoyaki",
+        "address": "666 Takoyaki ST",
+        "salary": "900",
+        "img": "img\/coffee (2).jpg",
+        "content": "aaa",
+        "dis": true
+    },
+    {
+        "jobId": 16,
+        "uId": 1,
+        "title": "taiyaki",
+        "address": "999 Taiyaki ST",
+        "salary": "500",
+        "img": "img\/cat.png",
+        "content": "aaa",
+        "dis": true
+    }
+]
