@@ -1,11 +1,5 @@
 <style>
-  /* #bgimg{
-    background-image: url(pic-06.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  } */
-  *{
+    *{
         margin: 0;
         padding: 0;
     }
@@ -13,7 +7,7 @@
         display: flex;
         column-gap: 2vh;
     }
-  section{
+    section{
     display: flex;
     flex-wrap: wrap;
     row-gap: 2vh;
@@ -37,8 +31,7 @@
     width: 100%;
     height: 35vh;
   }
-/* ------------------------- */
-ul
+  ul
 {
 margin:0px;
 padding:0px;
@@ -117,28 +110,27 @@ float:left;
 }
 .icon i{top:22px;position:relative;}
 /* a{ */
-/* display:block;
-position:absolute;
-float:left;
-font-family:arial;
-color:#fff;
+/* display:block; */
+/* position:absolute; */
+/* float:left; */
+/* font-family:arial;*/
+/* color:#fff;
 text-decoration:none;
-width:100%;
-height:70px;
-text-align:center; */
+width:100%; */
+/* height:70px; */
+/* text-align:center; */
 /* } */
 span
 {
 margin-top:25px;
 display:block;
 }
-  
 </style>
 <?php 
 include './pages/header.php';
 if(!isset($_SESSION['logUser'])) {
-  header("Location: ".$baseName.'index.php');
-  exit();
+    header("Location: ".$baseName.'index.php');
+    exit();
 }
 if(isset($_GET['id'])){
   $file = fopen('./data/job.json','r');
@@ -149,7 +141,7 @@ if(isset($_GET['id'])){
   $jobsArray = [];
   foreach($datas as $data){
     if($data['jobId']==$_GET['id']){
-      $data['dis'] = false;
+      $data['dis'] = true;
     }
     array_push($jobsArray,$data);
   }
@@ -160,12 +152,10 @@ if(isset($_GET['id'])){
   $file = fopen("./data/job.json",'r');
   $jobArray = json_decode(fread($file,filesize("./data/job.json")),true);
   fclose($file);
-  // print_r($jobArray);
-
 ?>
 
 <div id="box">
-  <nav>
+<nav>
     <ul>
       <li class="var_nav">
           <div class="link_bg"></div>
@@ -217,7 +207,7 @@ if(isset($_GET['id'])){
   <section>
     <?php 
       foreach($jobArray as $job){
-        if($job['dis']==false){
+        if($job['dis']==true){
           continue;
         }else{
           echo "<article>";
@@ -227,11 +217,13 @@ if(isset($_GET['id'])){
           echo "<h3>Address : ".$job['address']."</h3>"; 
           echo "<h3>Salary : ".$job['salary']."</h3>"; 
           echo "<h3>Content : ".$job['content']."</h3>"; 
-          echo "<a href='".$_SERVER['PHP_SELF']."?id=".$job['jobId']."'>Delete</a>";
+          echo "<a href='".$_SERVER['PHP_SELF']."?id=".$job['jobId']."'>Revival</a>";
           echo "</article>";
         }
-    }
+      }
+
     ?>
   </section>
-  </div>
+</div>
+
 <?php include './pages/footer.php'; ?>

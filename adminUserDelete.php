@@ -132,6 +132,13 @@ span
 margin-top:25px;
 display:block;
 }
+/* td,th{
+} */
+tbody, td, tfoot, th, thead, tr {
+    /* border-color:black; */
+    /* border-style:solid; */
+    border: 1px solid black;
+}
   
 </style>
 <?php 
@@ -141,26 +148,22 @@ if(!isset($_SESSION['logUser'])) {
   exit();
 }
 if(isset($_GET['id'])){
-  $file = fopen('./data/job.json','r');
-  $datas = fread($file,filesize('data/job.json'));
+  $file = fopen('./data/user_info.json','r');
+  $datas = fread($file,filesize('data/user_info.json'));
   $datas = json_decode($datas,true);
   fclose($file);
 
-  $jobsArray = [];
+  $usersArray = [];
   foreach($datas as $data){
-    if($data['jobId']==$_GET['id']){
-      $data['dis'] = false;
+    if($data['id']==$_GET['id']){
+      $data['dis'] = true;
     }
-    array_push($jobsArray,$data);
+    array_push($usersArray,$data);
   }
-  $file = fopen('./data/job.json','w');
-  fwrite($file,json_encode($jobsArray));
+  $file = fopen('./data/user_info.json','w');
+  fwrite($file,json_encode($usersArray));
   fclose($file);
 }
-  $file = fopen("./data/job.json",'r');
-  $jobArray = json_decode(fread($file,filesize("./data/job.json")),true);
-  fclose($file);
-  // print_r($jobArray);
 
 ?>
 
@@ -200,7 +203,7 @@ if(isset($_GET['id'])){
             <div class=icon> 
             <i class="fa-solid fa-right-from-bracket"></i>
             </div>
-            <a href="<?php echo $baseName.'adminUserDelete.php';?>"><span>Deleted User List</span></a>
+            <a href="<?php echo $baseName.'adminUserDelete.php';?>"><span>Banned User List</span></a>
           </div>
       </li>
       <li class="var_nav">
@@ -215,23 +218,54 @@ if(isset($_GET['id'])){
     </ul>
   </nav>
   <section>
-    <?php 
-      foreach($jobArray as $job){
-        if($job['dis']==false){
-          continue;
-        }else{
-          echo "<article>";
-          echo "<img src=".$job['img'].">";
-          echo "<h3>jobId : ".$job['jobId']."</h3>"; 
-          echo "<h3>Title : ".$job['title']."</h3>"; 
-          echo "<h3>Address : ".$job['address']."</h3>"; 
-          echo "<h3>Salary : ".$job['salary']."</h3>"; 
-          echo "<h3>Content : ".$job['content']."</h3>"; 
-          echo "<a href='".$_SERVER['PHP_SELF']."?id=".$job['jobId']."'>Delete</a>";
-          echo "</article>";
-        }
-    }
-    ?>
+    <table>
+        <thead>
+            <tr>
+                 <th>
+                     id
+                 </th>
+                 <th>
+                     firstname
+                 </th>
+                 <th>
+                     lastname
+                 </th>
+                 <th>
+                     email
+                 </th>
+                 <th>
+                     phonenumber
+                 </th>
+                 <th>
+                     age
+                 </th>
+                 <th>
+                    rivival button
+                 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            $file = fopen("./data/user_info.json",'r');
+            $userArray = json_decode(fread($file,filesize("./data/user_info.json")),true);
+            fclose($file);
+            // print_r($jobArray);
+            foreach($userArray as $user){
+                if($user['dis']==true){
+                continue;
+                }else{
+                    echo "<tr><td>".$user['id']."</td>";
+                    echo "<td>".$user['first_name']."</td>";
+                    echo "<td>".$user['last_name']."</td>";
+                    echo "<td>".$user['email']."</td>";
+                    echo "<td>".$user['phone']."</td>";
+                    echo "<td>".$user['age']."</td>";
+                    echo "<td><a href ='".$_SERVER['PHP_SELF']."?id=".$user['id']."'>Rivival</a></td></tr>";
+                }
+            }
+            ?>
+        </tbody>
+    </table>
   </section>
   </div>
 <?php include './pages/footer.php'; ?>
