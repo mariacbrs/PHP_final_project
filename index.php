@@ -15,8 +15,15 @@
             new bootstrap.Alert(alert)
           })
         </script>
+        <?php 
+        if(!isset($_SESSION['token'])){
+          $token = bin2hex(random_bytes(32));
+          $_SESSION['token'] = $token;
+        }
+        ?>
         
     <form method="POST" action="<?php echo $baseName.'log.php'; ?>">
+        <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?>">
         <div class="mb-3">
             <select class="form-select form-select-lg" name="role">
                 <option value="ds" disabled selected>Please select one</option>
