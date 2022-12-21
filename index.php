@@ -44,7 +44,10 @@
           <label for="pass">Password</label>
         </div>
         <button type="submit" class="btn btn-primary">LOGIN</button>
-    </form>
+      </form>
+      <div class="form-footer">
+       <p><a href="<?php echo $baseName.'applyer.php'; ?>">Create an account</a></p>
+      </div>
     </div>
 </div>
 <?php include './pages/footer.php'; ?>
