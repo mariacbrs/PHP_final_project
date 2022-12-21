@@ -18,11 +18,16 @@
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" style="display: <?php 
+                        if(isset($_SESSION['logUser'])) echo "none";
+                        else echo "block";
+                         ?> ;" href="<?php echo $baseName ;?>">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="display: <?php 
                         if(isset($_SESSION['logUser'])) echo "block";
                         else echo "none";
                          ?> ;" href="<?php echo $baseName.'logout.php';?>">Logout</a>
                     </li>
-    
                 </ul>
             </div>
         </nav>

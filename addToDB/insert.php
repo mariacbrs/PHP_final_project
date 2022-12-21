@@ -1,5 +1,5 @@
 <?php
-include './config.php';
+include './data/config.php';
 include './dbservices.php';
 include './jsonservices.php';
 $jsonSrv = new jsonService('./data/user_info.json');
