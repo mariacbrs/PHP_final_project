@@ -8,7 +8,7 @@
         "pass": "test",
         "age": 1,
         "role": 0,
-        "dis": false
+        "dis": 0
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "pass": "M02vd061PB",
         "age": 2,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "pass": "VZWmUU0vYs",
         "age": 3,
         "role": 0,
-        "dis": false
+        "dis": 0
     },
     {
         "id": 4,
@@ -41,7 +41,7 @@
         "pass": "Vp8k2wO",
         "age": 4,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 5,
@@ -52,7 +52,7 @@
         "pass": "gdI4WcE",
         "age": 5,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 6,
@@ -63,7 +63,7 @@
         "pass": "outsf4kWeTt",
         "age": 6,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 7,
@@ -74,7 +74,7 @@
         "pass": "GDmTMbF",
         "age": 7,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 8,
@@ -85,7 +85,7 @@
         "pass": "6TzGBawk7",
         "age": 8,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 9,
@@ -96,7 +96,7 @@
         "pass": "yUdHyaAD",
         "age": 9,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 10,
@@ -107,7 +107,7 @@
         "pass": "LijN3vO",
         "age": 10,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 11,
@@ -118,7 +118,7 @@
         "pass": "FBB4ZzIO5s8",
         "age": 11,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 12,
@@ -129,7 +129,7 @@
         "pass": "vi59R4qMVw",
         "age": 12,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 13,
@@ -140,7 +140,7 @@
         "pass": "YsLw6zj4v",
         "age": 13,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 14,
@@ -151,7 +151,7 @@
         "pass": "3ZaF1rdJGXUu",
         "age": 14,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 15,
@@ -162,7 +162,7 @@
         "pass": "QricFlM",
         "age": 15,
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 15,
@@ -173,7 +173,7 @@
         "pass": "test",
         "age": "78",
         "role": 0,
-        "dis": true
+        "dis": 1
     },
     {
         "id": 16,
@@ -184,6 +184,6 @@
         "pass": "test",
         "age": "55",
         "role": 0,
-        "dis": true
+        "dis": 1
     }
 ]

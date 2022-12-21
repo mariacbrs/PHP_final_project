@@ -7,7 +7,7 @@
         "salary": 20,
         "img": "img\/pic-01.jpg",
         "content": "Triple-buffered secondary paradigm",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 2,
@@ -17,7 +17,7 @@
         "salary": 16,
         "img": "img\/pic-02.jpg",
         "content": "Balanced national infrastructure",
-        "dis": false
+        "dis": 0
     },
     {
         "jobId": 3,
@@ -27,7 +27,7 @@
         "salary": 26,
         "img": "img\/pic-03.jpg",
         "content": "Sharable zero defect core",
-        "dis": true
+        "dis": 0
     },
     {
         "jobId": 4,
@@ -37,7 +37,7 @@
         "salary": 20,
         "img": "img\/pic-04.jpg",
         "content": "Upgradable incremental orchestration",
-        "dis": true
+        "dis": 0
     },
     {
         "jobId": 5,
@@ -47,7 +47,7 @@
         "salary": 27,
         "img": "img\/pic-05.jpg",
         "content": "Adaptive client-server info-mediaries",
-        "dis": false
+        "dis": 0
     },
     {
         "jobId": 6,
@@ -57,7 +57,7 @@
         "salary": 26,
         "img": "img\/pic-06.jpg",
         "content": "Focused radical matrix",
-        "dis": false
+        "dis": 0
     },
     {
         "jobId": 7,
@@ -67,7 +67,7 @@
         "salary": 23,
         "img": "img\/pic-07.jpg",
         "content": "Multi-layered bi-directional neural-net",
-        "dis": false
+        "dis": 0
     },
     {
         "jobId": 8,
@@ -77,7 +77,7 @@
         "salary": 22,
         "img": "img\/pic-08.jpg",
         "content": "Inverse disintermediate hardware",
-        "dis": false
+        "dis": 0
     },
     {
         "jobId": 9,
@@ -87,7 +87,7 @@
         "salary": 28,
         "img": "img\/pic-09.jpg",
         "content": "Public-key static paradigm",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 10,
@@ -97,7 +97,7 @@
         "salary": 20,
         "img": "img\/pic-10.jpg",
         "content": "Upgradable secondary initiative",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 11,
@@ -107,7 +107,7 @@
         "salary": 16,
         "img": "img\/pic-11.jpg",
         "content": "Open-source analyzing migration",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 12,
@@ -117,7 +117,7 @@
         "salary": 18,
         "img": "img\/pic-12.jpg",
         "content": "Configurable discrete secured line",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 13,
@@ -127,7 +127,7 @@
         "salary": 24,
         "img": "img\/pic-13.jpg",
         "content": "Intuitive context-sensitive info-mediaries",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 14,
@@ -137,7 +137,7 @@
         "salary": 19,
         "img": "img\/pic-14.jpg",
         "content": "Enterprise-wide grid-enabled hierarchy",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 15,
@@ -147,7 +147,7 @@
         "salary": 16,
         "img": "img\/pic-15.jpg",
         "content": "Upgradable system-worthy knowledge user",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 16,
@@ -157,7 +157,7 @@
         "salary": "900",
         "img": "img\/coffee (2).jpg",
         "content": "aaa",
-        "dis": true
+        "dis": 1
     },
     {
         "jobId": 16,
@@ -167,6 +167,6 @@
         "salary": "500",
         "img": "img\/cat.png",
         "content": "aaa",
-        "dis": true
+        "dis": 1
     }
 ]
