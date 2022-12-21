@@ -135,49 +135,71 @@ display:block;
   
 </style>
 <?php 
+include './addToDB/dbservices.php';
+include './addToDB/jsonservices.php';
 include './pages/header.php';
+// include './data/config.php';
 if(!isset($_SESSION['logUser'])) {
   header("Location: ".$baseName.'index.php');
   exit();
 }
 if(isset($_GET['id'])){
-  $file = fopen('./data/job.json','r');
-  $datas = fread($file,filesize('data/job.json'));
-  $datas = json_decode($datas,true);
-  fclose($file);
+  // $file = fopen('./data/job.json','r');
+  // $datas = fread($file,filesize('data/job.json'));
+  // $datas = json_decode($datas,true);
+  // fclose($file);
 
-  $jobsArray = [];
-  foreach($datas as $data){
-    if($data['jobId']==$_GET['id']){
-      $data['dis'] = false;
-    }
-    array_push($jobsArray,$data);
-  }
-  $file = fopen('./data/job.json','w');
-  fwrite($file,json_encode($jobsArray));
-  fclose($file);
+  $dbCon = new mysqli($hostName,$userName,$password,$dbName);
+      if($dbCon->connect_error){
+        echo "connect error";
+      }else{
+        $sql = "SELECT * FROM ja_tb";
+        $result = $dbCon->query($sql);
+      }
+      foreach($result as $data){
+        if($data['jobid']==$_GET['id']){
+          $sql = "UPDATE ja_tb SET dis = 0 WHERE jobid = ".$_GET['id'].";";
+          $dbCon->query($sql);
+          $dbCon->close();
+        }
+      }
+
+
+  // $jobsArray = [];
+  // foreach($datas as $data){
+  //   if($data['jobId']==$_GET['id']){
+  //     $data['dis'] = false;
+  //   }
+  //   array_push($jobsArray,$data);
+  // }
+  // $file = fopen('./data/job.json','w');
+  // fwrite($file,json_encode($jobsArray));
+  // fclose($file);
 }
-  $file = fopen("./data/job.json",'r');
-  $jobArray = json_decode(fread($file,filesize("./data/job.json")),true);
-  fclose($file);
-  // print_r($jobArray);
+  // $file = fopen("./data/job.json",'r');
+  // $jobArray = json_decode(fread($file,filesize("./data/job.json")),true);
+  // fclose($file);
 
-?>
+  
+  
+  // print_r($jobArray);
+  
+  ?>
 
 <div id="box">
   <nav>
     <ul>
       <li class="var_nav">
-          <div class="link_bg"></div>
+        <div class="link_bg"></div>
           <div class="link_title">
             <div class=icon> 
-            <i class="fa-solid fa-house"></i>
+              <i class="fa-solid fa-house"></i>
             </div>
             <a href="<?php echo $baseName.'admin.php'; ?>"><span>Job list</span></a>
           </div>
       </li>
       <li class="var_nav">
-          <div class="link_bg"></div>
+        <div class="link_bg"></div>
           <div class="link_title">
             <div class=icon> 
             <i class="fa-regular fa-trash-can"></i>
@@ -216,21 +238,45 @@ if(isset($_GET['id'])){
   </nav>
   <section>
     <?php 
-      foreach($jobArray as $job){
-        if($job['dis']==false){
-          continue;
-        }else{
-          echo "<article>";
-          echo "<img src=".$job['img'].">";
-          echo "<h3>jobId : ".$job['jobId']."</h3>"; 
-          echo "<h3>Title : ".$job['title']."</h3>"; 
-          echo "<h3>Address : ".$job['address']."</h3>"; 
-          echo "<h3>Salary : ".$job['salary']."</h3>"; 
-          echo "<h3>Content : ".$job['content']."</h3>"; 
-          echo "<a href='".$_SERVER['PHP_SELF']."?id=".$job['jobId']."'>Delete</a>";
-          echo "</article>";
+      $dbCon = new mysqli($hostName,$userName,$password,$dbName);
+      if($dbCon->connect_error){
+        echo "connect error";
+      }else{
+        $sql = "SELECT * FROM ja_tb";
+        $result = $dbCon->query($sql);
+      
+        foreach($result as $data){
+          if($data['dis']==false){
+            continue;
+          }else{
+            echo "<article>";
+            echo "<img src=".$data['img'].">";
+            echo "<h3>jobId : ".$data['jobid']."</h3>"; 
+            echo "<h3>Title : ".$data['title']."</h3>"; 
+            echo "<h3>Address : ".$data['address']."</h3>"; 
+            echo "<h3>Salary : ".$data['salary']."</h3>"; 
+            echo "<h3>Content : ".$data['content']."</h3>"; 
+            echo "<a href='".$_SERVER['PHP_SELF']."?id=".$data['jobid']."'>Delete</a>";
+            echo "</article>";
+          }
         }
-    }
+        $dbCon->close();
+      }
+    //   foreach($jobArray as $job){
+      //     if($job['dis']==false){
+    //       continue;
+    //     }else{
+    //       echo "<article>";
+    //       echo "<img src=".$job['img'].">";
+    //       echo "<h3>jobId : ".$job['jobId']."</h3>"; 
+    //       echo "<h3>Title : ".$job['title']."</h3>"; 
+    //       echo "<h3>Address : ".$job['address']."</h3>"; 
+    //       echo "<h3>Salary : ".$job['salary']."</h3>"; 
+    //       echo "<h3>Content : ".$job['content']."</h3>"; 
+    //       echo "<a href='".$_SERVER['PHP_SELF']."?id=".$job['jobId']."'>Delete</a>";
+    //       echo "</article>";
+    //     }
+    // }
     ?>
   </section>
   </div>
