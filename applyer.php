@@ -9,7 +9,7 @@ include './pages/header.php';
         else echo "none";
         ?> ;">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <strong>Warning!</strong>This password ( <?php echo $_GET['pass'] ?> ) is already used!
+    <strong>Warning!</strong>This password ( <?php echo htmlspecialchars($_GET['pass']) ?> ) is already used!
 </div>
 <h1>Applyer Registeration Form</h1>
 <form method="POST" action="<?php echo $baseName.'applyerReg.php'; ?>">

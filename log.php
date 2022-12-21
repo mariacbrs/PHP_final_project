@@ -4,7 +4,7 @@
         $email = $_POST['email'];
         $pass = $_POST['pass'];
         $role = $_POST['role'];
-        if(!isset($_POST['token']) || $_POST['token']!==$_SESSION['token']){
+        if($_POST['token']!==$_SESSION['token']){
             echo "You used wrong Login Form!!!";
             exit();
         }else{
@@ -39,3 +39,4 @@
         
     }
 ?>
+
