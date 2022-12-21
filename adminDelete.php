@@ -132,7 +132,8 @@ if(!isset($_SESSION['logUser'])) {
     header("Location: ".$baseName.'index.php');
     exit();
 }
-if(isset($_GET['id'])){
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  $jobid = $_POST['jobid'];
   $dbCon = new mysqli($hostName,$userName,$password,$dbName);
   if($dbCon->connect_error){
     echo "connect error";
@@ -141,32 +142,13 @@ if(isset($_GET['id'])){
     $result = $dbCon->query($sql);
   }
   foreach($result as $data){
-    if($data['jobid']==$_GET['id']){
-      $sql = "UPDATE ja_tb SET dis = 1 WHERE jobid = ".$_GET['id'].";";
+    if($data['jobid']==$jobid){
+      $sql = "UPDATE ja_tb SET dis = 1 WHERE jobid = $jobid;";
       $dbCon->query($sql);
       $dbCon->close();
     }
   }
-
-  // $file = fopen('./data/job.json','r');
-  // $datas = fread($file,filesize('data/job.json'));
-  // $datas = json_decode($datas,true);
-  // fclose($file);
-
-  // $jobsArray = [];
-  // foreach($datas as $data){
-  //   if($data['jobId']==$_GET['id']){
-  //     $data['dis'] = true;
-  //   }
-  //   array_push($jobsArray,$data);
-  // }
-  // $file = fopen('./data/job.json','w');
-  // fwrite($file,json_encode($jobsArray));
-  // fclose($file);
 }
-  // $file = fopen("./data/job.json",'r');
-  // $jobArray = json_decode(fread($file,filesize("./data/job.json")),true);
-  // fclose($file);
 ?>
 
 <div id="box">
@@ -239,31 +221,12 @@ if(isset($_GET['id'])){
             echo "<h3>Address : ".$data['address']."</h3>"; 
             echo "<h3>Salary : ".$data['salary']."</h3>"; 
             echo "<h3>Content : ".$data['content']."</h3>"; 
-            echo "<a href='".$_SERVER['PHP_SELF']."?id=".$data['jobid']."'>Rivival</a>";
+            echo "<form action='".$_SERVER['PHP_SELF']."' method='post'><input type=submit value='Rivival'><input type='hidden' name='jobid' value='".$data['jobid']."'></form>";
             echo "</article>";
           }
         }
         $dbCon->close();
-    }
-
-
-
-      // foreach($jobArray as $job){
-      //   if($job['dis']==true){
-      //     continue;
-      //   }else{
-      //     echo "<article>";
-      //     echo "<img src=".$job['img'].">";
-      //     echo "<h3>jobId : ".$job['jobId']."</h3>"; 
-      //     echo "<h3>Title : ".$job['title']."</h3>"; 
-      //     echo "<h3>Address : ".$job['address']."</h3>"; 
-      //     echo "<h3>Salary : ".$job['salary']."</h3>"; 
-      //     echo "<h3>Content : ".$job['content']."</h3>"; 
-      //     echo "<a href='".$_SERVER['PHP_SELF']."?id=".$job['jobId']."'>Revival</a>";
-      //     echo "</article>";
-      //   }
-      // }
-
+      }
     ?>
   </section>
 </div>

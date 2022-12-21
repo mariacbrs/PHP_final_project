@@ -147,39 +147,24 @@ if(!isset($_SESSION['logUser'])) {
   header("Location: ".$baseName.'index.php');
   exit();
 }
-if(isset($_GET['id'])){
 
+if($_SERVER['REQUEST_METHOD']=="POST"){
+  $uid = $_POST['uid'];
   $dbCon = new mysqli($hostName,$userName,$password,$dbName);
   if($dbCon->connect_error){
-    echo "connect error";
-  }else{
-    $sql = "SELECT * FROM user_tb";
-    $result = $dbCon->query($sql);
-  }
-  foreach($result as $data){
-    if($data['uid']==$_GET['id']){
-      $sql = "UPDATE user_tb SET dis = 1 WHERE uid = ".$_GET['id'].";";
-      $dbCon->query($sql);
-      $dbCon->close();
-    }
-  }
-  // $file = fopen('./data/user_info.json','r');
-  // $datas = fread($file,filesize('data/user_info.json'));
-  // $datas = json_decode($datas,true);
-  // fclose($file);
-
-  // $usersArray = [];
-  // foreach($datas as $data){
-  //   if($data['id']==$_GET['id']){
-  //     $data['dis'] = true;
-  //   }
-  //   array_push($usersArray,$data);
-  // }
-  // $file = fopen('./data/user_info.json','w');
-  // fwrite($file,json_encode($usersArray));
-  // fclose($file);
+        echo "connect error";
+      }else{
+        $sql = "SELECT * FROM user_tb";
+        $result = $dbCon->query($sql);
+      }
+      foreach($result as $data){
+        if($data['uid']==$uid){
+          $sql = "UPDATE user_tb SET dis = 1 WHERE uid = $uid;";
+          $dbCon->query($sql);
+          $dbCon->close();
+        }
+      }
 }
-
 ?>
 
 <div id="box">
@@ -278,30 +263,12 @@ if(isset($_GET['id'])){
                     echo "<td>".$user['email']."</td>";
                     echo "<td>".$user['phone']."</td>";
                     echo "<td>".$user['age']."</td>";
-                    echo "<td><a href ='".$_SERVER['PHP_SELF']."?id=".$user['uid']."'>Rivival</a></td></tr>";
+                    echo "<td><form action='".$_SERVER['PHP_SELF']."' method='post'><input type=submit value='rivival'><input type='hidden' name='uid' value='".$user['uid']."'></form></td>";
                     
                   }
                 }
                 $dbCon->close();
               }
-
-            // $file = fopen("./data/user_info.json",'r');
-            // $userArray = json_decode(fread($file,filesize("./data/user_info.json")),true);
-            // fclose($file);
-            // // print_r($jobArray);
-            // foreach($userArray as $user){
-            //     if($user['dis']==true){
-            //     continue;
-            //     }else{
-            //         echo "<tr><td>".$user['id']."</td>";
-            //         echo "<td>".$user['first_name']."</td>";
-            //         echo "<td>".$user['last_name']."</td>";
-            //         echo "<td>".$user['email']."</td>";
-            //         echo "<td>".$user['phone']."</td>";
-            //         echo "<td>".$user['age']."</td>";
-            //         echo "<td><a href ='".$_SERVER['PHP_SELF']."?id=".$user['id']."'>Rivival</a></td></tr>";
-            //     }
-            // }
             ?>
         </tbody>
     </table>
