@@ -146,17 +146,15 @@ if(!isset($_SESSION['logUser'])) {
 ?>
 
 <?php 
-if(isset($_GET['key'])){
-  $idx = $_GET['key'];
-  $jobArray[$idx]['dis']=false;
-  $file = fopen('./data/job.json','w');
-  fwrite($file,json_encode($jobArray));
-  fclose($file);
-  header("Location: ".$_SERVER['PHP_SELF']);
-}
+// if(isset($_GET['key'])){
+//   $idx = $_GET['key'];
+//   $jobArray[$idx]['dis']=false;
+//   $file = fopen('./data/job.json','w');
+//   fwrite($file,json_encode($jobArray));
+//   fclose($file);
+//   header("Location: ".$_SERVER['PHP_SELF']);
+// }
 ?>
-<?php 
-// echo $_SESSION['cmd'];?>
 <div id="box">
   <nav>
         <ul>
@@ -214,7 +212,7 @@ if(isset($_GET['key'])){
           echo "<h3>Address : ".$data['address']."</h3>"; 
           echo "<h3>Salary : ".$data['salary']."</h3>"; 
           echo "<h3>Content : ".$data['content']."</h3>"; 
-          echo "<a href='".$_SERVER['PHP_SELF']."?id=".$data['jobid']."'>Edit</a>";
+          echo "<a href='jobEdit.php?id=".$data['jobid']."'>Edit</a>";
           echo "</article>";
         }
       }
