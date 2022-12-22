@@ -1,5 +1,11 @@
 <style>
-    *{
+  /* #bgimg{
+    background-image: url(pic-06.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  } */
+  *{
         margin: 0;
         padding: 0;
     }
@@ -7,7 +13,7 @@
         display: flex;
         column-gap: 2vh;
     }
-    section{
+  section{
     display: flex;
     flex-wrap: wrap;
     row-gap: 2vh;
@@ -31,7 +37,8 @@
     width: 100%;
     height: 35vh;
   }
-  ul
+/* ------------------------- */
+ul
 {
 margin:0px;
 padding:0px;
@@ -110,49 +117,58 @@ float:left;
 }
 .icon i{top:22px;position:relative;}
 /* a{ */
-/* display:block; */
-/* position:absolute; */
-/* float:left; */
-/* font-family:arial;*/
-/* color:#fff;
+/* display:block;
+position:absolute;
+float:left;
+font-family:arial;
+color:#fff;
 text-decoration:none;
-width:100%; */
-/* height:70px; */
-/* text-align:center; */
+width:100%;
+height:70px;
+text-align:center; */
 /* } */
 span
 {
 margin-top:25px;
 display:block;
 }
+/* td,th{
+} */
+tbody, td, tfoot, th, thead, tr {
+    /* border-color:black; */
+    /* border-style:solid; */
+    border: 1px solid black;
+}
+  
 </style>
 <?php 
 include './pages/header.php';
 if(!isset($_SESSION['logUser'])) {
-    header("Location: ".$baseName.'index.php');
-    exit();
+  header("Location: ".$baseName.'index.php');
+  exit();
 }
+
 if($_SERVER['REQUEST_METHOD']=="POST"){
-  $jobid = $_POST['jobid'];
+  $uid = $_POST['uid'];
   $dbCon = new mysqli($hostName,$userName,$password,$dbName);
   if($dbCon->connect_error){
-    echo "connect error";
-  }else{
-    $sql = "SELECT * FROM ja_tb";
-    $result = $dbCon->query($sql);
-  }
-  foreach($result as $data){
-    if($data['jobid']==$jobid){
-      $sql = "UPDATE ja_tb SET dis = 1 WHERE jobid = $jobid;";
-      $dbCon->query($sql);
-      $dbCon->close();
-    }
-  }
+        echo "connect error";
+      }else{
+        $sql = "SELECT * FROM user_tb";
+        $result = $dbCon->query($sql);
+      }
+      foreach($result as $data){
+        if($data['uid']==$uid){
+          $sql = "UPDATE user_tb SET dis = 1 WHERE uid = $uid;";
+          $dbCon->query($sql);
+          $dbCon->close();
+        }
+      }
 }
 ?>
 
 <div id="box">
-<nav>
+  <nav>
     <ul>
       <li class="var_nav">
           <div class="link_bg"></div>
@@ -187,7 +203,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             <div class=icon> 
             <i class="fa-solid fa-right-from-bracket"></i>
             </div>
-            <a href="<?php echo $baseName.'adminUserDelete.php';?>"><span>Deleted User List</span></a>
+            <a href="<?php echo $baseName.'adminUserDelete.php';?>"><span>Banned User List</span></a>
           </div>
       </li>
       <li class="var_nav">
@@ -202,33 +218,60 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     </ul>
   </nav>
   <section>
-    <?php 
-      $dbCon = new mysqli($hostName,$userName,$password,$dbName);
-      if($dbCon->connect_error){
-        echo "connect error";
-      }else{
-        $sql = "SELECT * FROM ja_tb";
-        $result = $dbCon->query($sql);
+    <table>
+        <thead>
+            <tr>
+                 <th>
+                     id
+                 </th>
+                 <th>
+                     firstname
+                 </th>
+                 <th>
+                     lastname
+                 </th>
+                 <th>
+                     email
+                 </th>
+                 <th>
+                     phonenumber
+                 </th>
+                 <th>
+                     age
+                 </th>
+                 <th>
+                    rivival button
+                 </th>
+            </tr>
+        </thead>
+        <tbody>
+          <?php 
+              $dbCon = new mysqli($hostName,$userName,$password,$dbName);
+              if($dbCon->connect_error){
+                echo "connect error";
+              }else{
+                $sql = "SELECT * FROM user_tb";
+                $result = $dbCon->query($sql);
 
-        foreach($result as $data){
-          if($data['dis']==true){
-            continue;
-          }else{
-            echo "<article>";
-            echo "<img src=".$data['img'].">";
-            echo "<h3>jobId : ".$data['jobid']."</h3>"; 
-            echo "<h3>Title : ".$data['title']."</h3>"; 
-            echo "<h3>Address : ".$data['address']."</h3>"; 
-            echo "<h3>Salary : ".$data['salary']."</h3>"; 
-            echo "<h3>Content : ".$data['content']."</h3>"; 
-            echo "<form action='".$_SERVER['PHP_SELF']."' method='post'><input type=submit value='Rivival'><input type='hidden' name='jobid' value='".$data['jobid']."'></form>";
-            echo "</article>";
-          }
-        }
-        $dbCon->close();
-      }
-    ?>
+                foreach($result as $user){
+                  if($user['dis']==true){
+                    continue;
+                  }else{
+                    echo "<tr><td>".$user['uid']."</td>";
+                    echo "<td>".$user['first_name']."</td>";
+                    echo "<td>".$user['last_name']."</td>";
+                    echo "<td>".$user['email']."</td>";
+                    echo "<td>".$user['phone']."</td>";
+                    echo "<td>".$user['age']."</td>";
+                    echo "<td><form action='".$_SERVER['PHP_SELF']."' method='post'><input type=submit value='rivival'><input type='hidden' name='uid' value='".$user['uid']."'></form></td>";
+                    
+                  }
+                }
+                $dbCon->close();
+              }
+            ?>
+        </tbody>
+    </table>
   </section>
-</div>
-
+  </div>
 <?php include './pages/footer.php'; ?>
