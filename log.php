@@ -9,17 +9,17 @@
             exit();
         }else{
             if($role == 'employer'){
-                $file = fopen('./data/employer.json','r');
-                $empArray = json_decode(fread($file,filesize('./data/employer.json')),true);
+                $file = fopen('./data/user_info.json','r');
+                $empArray = json_decode(fread($file,filesize('./data/user_info.json')),true);
                 foreach($empArray as $emp){
-                    if($emp['email']==$email && $emp['password']==$pass){
+                    if($emp['email']==$email && $emp['pass']==$pass){
                         $_SESSION['logUser'] = $emp;
                         header("Location: ".$baseName.'employer.php');
                         exit();
                     }else{
                         header("Location: ".$baseName.'index.php'); 
                     }
-                }  
+                }
             }else{
                 $file = fopen('./data/admin.json', 'r');
                 $adminArray = json_decode(fread($file,filesize('./data/admin.json')),true);
