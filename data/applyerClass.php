@@ -18,7 +18,7 @@
             $this->age = $age;
         }  
         function convert_info($idNum){
-            return ["id"=>$idNum,"first_name"=>$this->fname,"last_name"=>$this->lname,"email"=>$this->email,"phone"=>$this->phone,"pass"=>$this->pass,"age"=>$this->age,"role"=>$this->role,"dis"=>$this->dis];
+            return ["uid"=>$idNum,"first_name"=>$this->fname,"last_name"=>$this->lname,"email"=>$this->email,"phone"=>$this->phone,"pass"=>$this->pass,"age"=>$this->age,"role"=>$this->role,"dis"=>$this->dis];
         }      
     }
 ?>
