@@ -1,43 +1,15 @@
 <style>
-  /* #bgimg{
-    background-image: url(pic-06.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  } */
-  *{
-        margin: 0;
-        padding: 0;
-    }
-    #box{
-        display: flex;
-        column-gap: 2vh;
-    }
-  section{
+*{
+    margin: 0;
+    padding: 0;
+}
+#box{
     display: flex;
-    flex-wrap: wrap;
-    row-gap: 2vh;
     column-gap: 2vh;
-    height: 95vh;
-  }
-  article{
-    width: 25%;
-    background-color:navajowhite;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    row-gap: 1vh;
-    height: 100%;
-  }
-  button{
-    width: 10vh;
-  }
-  img{
+}
+form{
     width: 100%;
-    height: 35vh;
-  }
-/* ------------------------- */
+}
 ul
 {
 margin:0px;
@@ -132,7 +104,6 @@ span
 margin-top:25px;
 display:block;
 }
-  
 </style>
 <?php 
 include './pages/header.php';
@@ -146,18 +117,28 @@ if(!isset($_SESSION['logUser'])) {
 ?>
 
 <?php 
-// if(isset($_GET['key'])){
-//   $idx = $_GET['key'];
-//   $jobArray[$idx]['dis']=false;
-//   $file = fopen('./data/job.json','w');
-//   fwrite($file,json_encode($jobArray));
-//   fclose($file);
-//   header("Location: ".$_SERVER['PHP_SELF']);
-// }
+if(isset($_GET['key'])){
+  $idx = $_GET['key'];
+  $jobArray[$idx]['dis']=false;
+  $file = fopen('./data/job.json','w');
+  fwrite($file,json_encode($jobArray));
+  fclose($file);
+  header("Location: ".$baseName.'admin.php');
+}
 ?>
+
 <div id="box">
-  <nav>
+    <nav>
         <ul>
+            <li class="var_nav">
+                <div class="link_bg"></div>
+                <div class="link_title">
+                    <div class=icon> 
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    </div>
+                    <a href="<?php echo $baseName.'employer.php'; ?>"><span>My page</span></a>
+                </div>
+            </li>
             <li class="var_nav">
                 <div class="link_bg"></div>
                 <div class="link_title">
@@ -167,18 +148,6 @@ if(!isset($_SESSION['logUser'])) {
                     <a href="<?php echo $baseName.'empPost.php'; ?>"><span>Post new Job</span></a>
                 </div>
             </li>
-            <!-- <li class="var_nav">
-                <div class="link_bg"></div>
-                <div class="link_title">
-                    <div class=icon> 
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    </div>
-                    <a href="
-                    <?php 
-                    // echo $baseName.'empEdit.php'; ?>
-                    "><span>Edit Job's informations</span></a>
-                </div>
-            </li> -->
             <li class="var_nav">
                 <div class="link_bg"></div>
                 <div class="link_title">
@@ -190,36 +159,41 @@ if(!isset($_SESSION['logUser'])) {
             </li>
         </ul>
     </nav>
-
-  <section>
-    <?php 
-    // include './data/config.php';
-    
-    $dbCon = new mysqli($hostName,$userName,$password,$dbName);
-    if($dbCon->connect_error){
-      echo "connect error";
-    }else{
-      $sql = "SELECT * FROM ja_tb";
-      $result = $dbCon->query($sql);
-      foreach($result as $data){
-        if($data['dis']==false || $data['uid']!=$_SESSION['logUser']["uid"]){
-          continue;
-        }else{
-          // print_r($data);
-          echo "<article>";
-          echo "<img src=".$data['img'].">";
-          echo "<h3>Title : ".$data['title']."</h3>"; 
-          echo "<h3>Address : ".$data['address']."</h3>"; 
-          echo "<h3>Salary : ".$data['salary']."</h3>"; 
-          echo "<h3>Content : ".$data['content']."</h3>"; 
-          echo "<a href='jobEdit.php?id=".$data['jobid']."'>Edit</a>";
-          echo "</article>";
-        }
-      }
-      $dbCon->close();
-    }
-    ?>
-  </section>
+    <form method="POST" action="<?php echo $baseName.'jobReg.php'; ?>" enctype="multipart/form-data">
+        <div class="form-floating mb-3">
+            <input
+                type="text"
+                class="form-control" name="title" placeholder="title" required>
+            <label for="formId1">title</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input
+                type="text"
+                class="form-control" name="address" placeholder="address" required>
+            <label for="formId1">address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input
+                type="number"
+                class="form-control" name="salary" placeholder="salary" required>
+            <label for="formId1">salary</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input
+                type="file"
+                class="form-control" name="img" placeholder="image" required>
+            <label for="formId1">image</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input
+                type="text"
+                class="form-control" name="content" placeholder="content" required>
+            <label for="formId1">content</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form> 
 </div>
 
-<?php include './pages/footer.php';?>
+<?php include './pages/footer.php'; ?>
+
+
