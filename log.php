@@ -13,7 +13,7 @@
                 $file = fopen('./data/user_info.json','r');
                 $empArray = json_decode(fread($file,filesize('./data/user_info.json')),true);
                 foreach($empArray as $emp){
-                    if($emp['email']==$email && $emp['password']==$pass){
+                    if($emp['email']==$email && $emp['pass']==$pass){
                         $_SESSION['logUser'] = $emp;
                         header("Location: ".$baseName.'employer.php');
                         exit();
@@ -21,7 +21,10 @@
                         header("Location: ".$baseName.'index.php'); 
                     }
                 }
+<<<<<<< HEAD
             //if the user choose the role employer will search for the information in the userinfo file and check if all the information is corret, then if the information match will redirect the user to employer.php, otherwise the user will go back to the index.php to log in again. 
+=======
+>>>>>>> 35d5035a43d04a9cc8905fa822463896a1970bc1
             }else{
                 $file = fopen('./data/admin.json', 'r');
                 $adminArray = json_decode(fread($file,filesize('./data/admin.json')),true);
@@ -43,4 +46,3 @@
         
     }
 ?>
-

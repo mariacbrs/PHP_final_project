@@ -146,16 +146,15 @@ if(!isset($_SESSION['logUser'])) {
 ?>
 
 <?php 
-if(isset($_GET['key'])){
-  $idx = $_GET['key'];
-  $jobArray[$idx]['dis']=false;
-  $file = fopen('./data/job.json','w');
-  fwrite($file,json_encode($jobArray));
-  fclose($file);
-  header("Location: ".$_SERVER['PHP_SELF']);
-}
+// if(isset($_GET['key'])){
+//   $idx = $_GET['key'];
+//   $jobArray[$idx]['dis']=false;
+//   $file = fopen('./data/job.json','w');
+//   fwrite($file,json_encode($jobArray));
+//   fclose($file);
+//   header("Location: ".$_SERVER['PHP_SELF']);
+// }
 ?>
-
 <div id="box">
   <nav>
         <ul>
@@ -194,47 +193,33 @@ if(isset($_GET['key'])){
 
   <section>
     <?php 
-    include './addToDB/dbservices.php';
     // include './data/config.php';
-    $dbService = new dbServices($hostName,$userName,$password,$dbName);
-    if($dbcon = $dbService->dbConnect()){
-        $result = $dbService->select('user_tb',['first_name'],['uid'=>"'$uid'",'pass'=>"'$pass'"],'AND');
-        // echo $result->num_rows;
-        echo "hello";
-    }
-
-    if($dbcon->connect_error){
-        echo "connection error";
-    }else{
-        $select = "SELECT * FROM user_tb WHERE email='$email'";
-        $result = $dbcon->query($select);
-        if($result->num_rows > 0){
-            $user = $result->fetch_assoc();
-            if(password_verify($pass,$user['pass'])){
-                echo "user found";
-            }else{
-                echo "user not found";    
-            }
-        }else{
-            echo "user not found";
-        }
-        $dbcon->close();
-    };
     
-      foreach($jobArray as $key =>$job){
-        if($job['dis']==true && $job['uId'] == $_SESSION['logUser']["uid"]){
+    $dbCon = new mysqli($hostName,$userName,$password,$dbName);
+    if($dbCon->connect_error){
+      echo "connect error";
+    }else{
+      $sql = "SELECT * FROM ja_tb";
+      $result = $dbCon->query($sql);
+      foreach($result as $data){
+        if($data['dis']==false || $data['uid']!=$_SESSION['logUser']["uid"]){
+          continue;
+        }else{
+          // print_r($data);
           echo "<article>";
-          echo "<img src=".$job['img'].">";
-          echo "<h3>Title : ".$job['title']."</h3>"; 
-          echo "<h3>Address : ".$job['address']."</h3>"; 
-          echo "<h3>Salary : ".$job['salary']."</h3>"; 
-          echo "<h3>Content : ".$job['content']."</h3>"; 
-          echo "<button type='button' class='btn btn-primary'><a href='".$_SERVER['PHP_SELF']."key=".$key."'>Delete</a></button>";
+          echo "<img src=".$data['img'].">";
+          echo "<h3>Title : ".$data['title']."</h3>"; 
+          echo "<h3>Address : ".$data['address']."</h3>"; 
+          echo "<h3>Salary : ".$data['salary']."</h3>"; 
+          echo "<h3>Content : ".$data['content']."</h3>"; 
+          echo "<a href='jobEdit.php?id=".$data['jobid']."'>Edit</a>";
           echo "</article>";
         }
       }
+      $dbCon->close();
+    }
     ?>
   </section>
 </div>
 
-<?php include './pages/footer.php'; ?>
+<?php include './pages/footer.php';?>

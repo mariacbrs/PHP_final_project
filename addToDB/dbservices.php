@@ -26,7 +26,7 @@
         }
         function insert($tbName,$valuesArray,$fieldArray=null){
             if($fieldArray!=null){
-                $fields = "(".implode(',',$fieldArray).")";
+                $fields = "(".implode('',$fieldArray).")";
             }else{
                 $fields = '';
             }
