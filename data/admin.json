@@ -1,10 +1,5 @@
 [{"email":"mariaclaraborgesrs@gmail.com","password":"mariaclara"},
-<<<<<<< HEAD
-{"email":"yusuke@mail.com","password":"yusuke"},
-{"email":"shotaro@email.com","password":"shotaro"},
-{"email":"takumi@email.com","password":"takumi"}]
-=======
 {"email":"y@test.com","password":"yusuke"},
 {"email":"s@test.com","password":"shotaro"},
 {"email":"t@test.com","password":"takumi"}]
->>>>>>> 35d5035a43d04a9cc8905fa822463896a1970bc1
+
