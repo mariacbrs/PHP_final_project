@@ -1,8 +1,8 @@
 <?php
-include './data/config.php';
+include '../data/config.php';
 include './dbservices.php';
 include './jsonservices.php';
-$jsonSrv = new jsonService('./data/user_info.json');
+$jsonSrv = new jsonService('../data/user_info.json');
 $data = $jsonSrv->jsontoArray();
 $dbSrv = new dbServices($hostName,$userName,$password,$dbName);
 if($dbSrv->dbConnect()){
@@ -23,7 +23,7 @@ if($dbSrv->dbConnect()){
 }else{
     echo "problem";
 }
-$jsonSrv1 = new jsonService('./data/job.json');
+$jsonSrv1 = new jsonService('../data/job.json');
 $data = $jsonSrv1->jsontoArray();
 $dbSrv = new dbServices($hostName,$userName,$password,$dbName);
 if($dbSrv->dbConnect()){
