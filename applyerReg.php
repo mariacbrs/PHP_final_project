@@ -62,8 +62,8 @@
         $applyArray = json_decode(fread($file,filesize('./data/user_info.json')),true);
         fclose($file);
         foreach($applyArray as $value){
-            if($value['pass']==$pass){
-                header("Location: ".$baseName."applyer.php?pass=".$pass);
+            if($value['email']==$email){
+                header("Location: ".$baseName."applyer.php?email=".$email);
                 exit();
             }
         }

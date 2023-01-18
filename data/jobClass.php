@@ -16,7 +16,7 @@
             $this->dis = true;
         }  
         function convert_info($idNum){
-            return ["jobId"=>$idNum,"uId"=>$_SESSION['logUser']["uid"],"title"=>$this->title,"address"=>$this->address,"salary"=>$this->salary,"img"=>$this->img,"content"=>$this->content,"dis"=>$this->dis];
+            return ["jobId"=>$idNum,"uid"=>$_SESSION['logUser']["uid"],"title"=>$this->title,"address"=>$this->address,"salary"=>$this->salary,"img"=>$this->img,"content"=>$this->content,"dis"=>$this->dis];
         }
         
         function select($tbName,$fieldArr=null,$conditionArr=null,$operator=null){

@@ -5,11 +5,11 @@ include './pages/header.php';
 ?>
 <div class="col-5">
     <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: <?php
-        if(isset($_GET['pass'])) echo "block";
+        if(isset($_GET['email'])) echo "block";
         else echo "none";
         ?> ;">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <strong>Warning!</strong>This password ( <?php echo htmlspecialchars($_GET['pass']) ?> ) is already used!
+    <strong>Warning!</strong>This email ( <?php echo htmlspecialchars($_GET['email']) ?> ) is already registered!
 </div>
 <h1>Applyer Registeration Form</h1>
 <form method="POST" action="<?php echo $baseName.'applyerReg.php'; ?>">
